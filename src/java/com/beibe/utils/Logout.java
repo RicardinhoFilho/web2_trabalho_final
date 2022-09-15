@@ -49,7 +49,9 @@ public class Logout extends HttpServlet {
                  return;
              }
         } catch (Exception e) {
-            response.sendRedirect("index.jsp");
+            request.setAttribute("msg","Não foi possível efeturar  o logout");
+            request.getRequestDispatcher("erro.jsp").forward(request, response);
+            return;
         }
        
               

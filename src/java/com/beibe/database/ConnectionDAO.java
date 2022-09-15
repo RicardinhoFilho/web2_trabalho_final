@@ -23,7 +23,7 @@ public class ConnectionDAO implements AutoCloseable {
              //Class.forName("com.mysql.cj.jdbc.Driver");
             Class.forName("com.mysql.jdbc.Driver"); /* Aqui registra */
             /* Aqui registra */
-            String url = "jdbc:mysql://localhost:3306/beibe?user=root&password=tatu1964&useSSL=false";
+            String url = "jdbc:mysql://localhost:3306/beibe?user=root&password=teste&useSSL=false";
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
             e.printStackTrace();

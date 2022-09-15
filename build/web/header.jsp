@@ -23,10 +23,7 @@
     <!-- Navbar Search Input-->
     <!-- * * Note: * * Visible only on and above the lg breakpoint-->
     <form class="form-inline me-auto d-none d-lg-block me-3">
-        <div class="input-group input-group-joined input-group-solid">
-            <input class="form-control pe-0" type="search" placeholder="Procurar" aria-label="Procurar" />
-            <div class="input-group-text"><i data-feather="Procurar"></i></div>
-        </div>
+      
     </form>
     <!-- Navbar Items-->
    
