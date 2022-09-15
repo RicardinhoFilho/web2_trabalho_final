@@ -61,8 +61,10 @@ public class HelperNovoChamado extends HttpServlet {
             
             response.sendRedirect("MeusChamados");
 
-        }catch (Exception ex) {
-            System.out.println(ex);
+        }catch (Exception e) {
+             request.setAttribute("msg", e.getMessage());
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
+            return;
         }
     }
 

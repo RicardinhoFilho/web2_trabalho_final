@@ -123,7 +123,7 @@
                                             <tr>
                                                 <td>
                                                     <div class="d-flex align-items-center">
-                                                        <div class="avatar me-2"><img class="avatar-img img-fluid" src="assets/img/illustrations/profiles/profile-1.png" /></div>
+                                                        <div class="avatar me-2"><img class="avatar-img img-fluid" src="https://ui-avatars.com/api/?name=<c:out value="${item.nome}"/>" /></div>
                                                             <c:out value="${item.nome}" />   <c:out value="${item.sobrenome}" />
                                                     </div>
                                                 </td>

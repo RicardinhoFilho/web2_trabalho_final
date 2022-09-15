@@ -57,7 +57,9 @@ public class CriarResposta extends HttpServlet {
             response.sendRedirect("MeusChamados");
 
         } catch (CriarRespostaException e) {
-            System.out.println(e);
+            request.setAttribute("msg", e.getMessage());
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
+            return;
         }
     }
 

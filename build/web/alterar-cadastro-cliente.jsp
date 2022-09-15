@@ -56,7 +56,7 @@
                                             <!-- Form Group (email address)            -->
                                             <div class="mb-3">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control" name="email" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Digite seu email"  value="~<c:out value="${cliente.email}"/>" />
+                                                <input class="form-control" name="email" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Digite seu email"  value="<c:out value="${cliente.email}"/>" />
                                             </div>
                                             <!-- Form Row    -->
                                             <div class="row gx-3">
@@ -64,14 +64,14 @@
                                                     <!-- Form Group (password)-->
                                                     <div class="mb-3">
                                                         <label class="small mb-1" for="inputPassword">Senha</label>
-                                                        <input class="form-control" name="senha" id="inputPassword" type="password" placeholder="Digite sua senha"  value="<c:out value="${cliente.senha}"/>" />
+                                                        <input class="form-control" name="senha" id="inputPassword" type="password" placeholder="Digite sua senha"  />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <!-- Form Group (confirm password)-->
                                                     <div class="mb-3">
                                                         <label class="small mb-1" for="inputConfirmPassword">Confirmar senha</label>
-                                                        <input class="form-control" id="inputConfirmPassword" type="password" placeholder="Repita sua senha" value="<c:out value="${cliente.senha}"/>"  />
+                                                        <input class="form-control" id="inputConfirmPassword" type="password" placeholder="Repita sua senha"  />
                                                     </div>
                                                 </div>
                                             </div>
@@ -80,7 +80,7 @@
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="login.html">Já tem uma conta? Entre!</a></div>
+                                        
                                     </div>
                                 </div>
                             </div>

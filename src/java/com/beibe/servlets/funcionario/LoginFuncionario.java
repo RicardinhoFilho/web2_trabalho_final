@@ -4,8 +4,6 @@
  */
 package com.beibe.servlets.funcionario;
 
-import com.beibe.database.ConnectionDAO;
-import com.beibe.database.DAO.DAOFuncionario;
 import com.beibe.facade.FuncionarioFacade;
 import com.beibe.model.Funcionario;
 import com.beibe.utils.PasswordEncrypter;
@@ -19,8 +17,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.RequestDispatcher;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -54,6 +50,7 @@ public class LoginFuncionario extends HttpServlet {
                     HttpSession session = request.getSession(true);
                     session.setAttribute("funcionario", funcionario);
                     response.sendRedirect("index.jsp");
+                        return;
                 } else {
 
                     request.setAttribute("msg", "Dados de Login inválidos!");
@@ -62,20 +59,23 @@ public class LoginFuncionario extends HttpServlet {
                     rd.forward(request, response);
                     return;
                 }
+            }else{
+                request.setAttribute("msg", "Email não cadastrado");
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
+            return;
             }
 
         } catch (BuscarFuncionarioException e) {
-            request.setAttribute("msg", "Não foi possível efetuar o login!");
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login-funcionario.jsp");
-            rd.forward(request, response);
-            
+             request.setAttribute("msg", "Não foi possível buscar seu cadastro");
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
             return;
         } catch (ErroEncriptacaoException ex) {
-             request.setAttribute("msg", "Não foi possível efetuar o login!");
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login-funcionario.jsp");
-            rd.forward(request, response);
+            request.setAttribute("msg", "Não foi possível efeturar seu login");
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
+            return;
         }
-
+        
+         
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -60,8 +60,9 @@ public class ListarChamados extends HttpServlet {
             }
 
         } catch (ListarChamadosException e) {
-            System.out.println(e);
-            response.sendRedirect("login-funcionario.jsp");
+              request.setAttribute("msg", e.getMessage());
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
+            return;
         }
     }
 

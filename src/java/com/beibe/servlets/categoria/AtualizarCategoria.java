@@ -52,10 +52,10 @@ public class AtualizarCategoria extends HttpServlet {
 
         } catch (AtualizarCategoriaException e) {
             e.printStackTrace();
-            response.sendRedirect("erro.jsp");
+          request.getRequestDispatcher("erro.jsp").forward(request, response);
         }catch(NumberFormatException e){
             e.printStackTrace();
-            response.sendRedirect("erro.jsp");
+          request.getRequestDispatcher("erro.jsp").forward(request, response);
         }
     }
 

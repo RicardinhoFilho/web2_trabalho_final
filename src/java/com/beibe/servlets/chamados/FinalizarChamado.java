@@ -64,8 +64,8 @@ public class FinalizarChamado extends HttpServlet {
             return;
 
         } catch (AtualizarChamadoException e) {
-            e.printStackTrace(); 
-            response.sendRedirect("index.jsp"); 
+             request.setAttribute("msg", e.getMessage());
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
             return;
         }
     }

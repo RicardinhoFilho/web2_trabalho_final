@@ -54,8 +54,9 @@ public class MeusChamados extends HttpServlet {
             response.sendRedirect("login-cliente.jsp");
 
         } catch (ListarChamadosException e) {
-            System.out.println(e);
-            response.sendRedirect("login-cliente.jsp");
+             request.setAttribute("msg", e.getMessage());
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
+            return;
         }
     }
 

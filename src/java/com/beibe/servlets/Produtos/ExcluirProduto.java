@@ -40,11 +40,13 @@ public class ExcluirProduto extends HttpServlet {
             response.sendRedirect("ListaProdutos");
 
         } catch (ExcluirProdutoException e) {
-            System.out.println(e);
-            response.sendRedirect("erro.jsp");
+              request.setAttribute("msg", e.getMessage());
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
+            return;
         }catch(NumberFormatException e){
-            System.out.println(e);
-            response.sendRedirect("erro.jsp");
+             request.setAttribute("msg", e.getMessage());
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
+            return;
         }
     }
 

@@ -48,11 +48,11 @@ request.setCharacterEncoding("UTF-8");
                 response.sendRedirect("ListaCategorias");
                 return;
             }
-            response.sendRedirect("login-funcionario.jsp");
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
 
         } catch (CriarCategoriaException e) {
             System.out.println(e);
-            response.sendRedirect("login-funcionario.jsp");
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
         }
     }
 

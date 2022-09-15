@@ -39,7 +39,9 @@ public class Total extends HttpServlet {
             out.println("<span>" + ChamadoFacade.emAberto()+ "</span>");
            
         }catch(CriarRespostaException e){
-            System.out.println(e);
+             request.setAttribute("msg", e.getMessage());
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
+            return;
         }
     }
 

@@ -62,10 +62,9 @@ public class ListarFuncionarios extends HttpServlet {
 
         } catch (BuscarFuncionarioException e) {
             request.setAttribute("msg", "Não foi listar os usuários!");
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login-funcionario.jsp");
-            rd.forward(request, response);
-            
+              request.getRequestDispatcher("erro.jsp").forward(request, response);
             return;
+            
         }
     }
 

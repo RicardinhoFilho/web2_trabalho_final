@@ -66,8 +66,8 @@ public class CadastrarCliente extends HttpServlet {
         } catch (ErroEncriptacaoException ex) {
             request.setAttribute("msg", "Não foi possível fazer cadastro!");
 
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login-cliente.jsp");
-            rd.forward(request, response);
+           
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
             return;
         }
     }

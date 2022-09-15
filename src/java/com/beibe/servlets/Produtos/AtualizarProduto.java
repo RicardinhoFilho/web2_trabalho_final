@@ -62,7 +62,8 @@ public class AtualizarProduto extends HttpServlet {
             response.sendRedirect("ListaProdutos");
 
         } catch (Exception e) {
-            System.out.println(e);
+            request.setAttribute("msg", "Não foi possível alterar o produto");
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
         }
     }
 

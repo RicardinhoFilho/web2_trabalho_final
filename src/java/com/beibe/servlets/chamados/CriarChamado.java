@@ -61,8 +61,10 @@ public class CriarChamado extends HttpServlet {
 
             response.sendRedirect("MeusChamados");
 
-        } catch (CriarChamadoException ex) {
-            System.out.println(ex);
+        } catch (CriarChamadoException e) {
+              request.setAttribute("msg", e.getMessage());
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
+            return;
         }
     }
 

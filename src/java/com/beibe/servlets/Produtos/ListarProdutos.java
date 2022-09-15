@@ -5,8 +5,10 @@
 package com.beibe.servlets.Produtos;
 
 import com.beibe.database.ConnectionDAO;
+import com.beibe.facade.ProdutosFacade;
 import com.beibe.database.DAO.DAOProduto;
 import com.beibe.model.Produto;
+import com.beibe.utils.exceptions.produtosExceptions.ListarProdutosException;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,16 +39,14 @@ public class ListarProdutos extends HttpServlet {
             throws ServletException, IOException {
         try {
 
-            DAOProduto dao = new DAOProduto(new ConnectionDAO().conectaDB());
-
-            
-            request.setAttribute("produtos", dao.listarTodos());
+            request.setAttribute("produtos", ProdutosFacade.listarProdutos());
 
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/produtos.jsp");
             rd.forward(request, response);
 
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (ListarProdutosException | ServletException | IOException e) {
+            request.setAttribute("msg", e.getMessage());
+            request.getRequestDispatcher("erro.jsp").forward(request, response);
         }
     }
 

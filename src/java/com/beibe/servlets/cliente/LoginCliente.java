@@ -64,21 +64,23 @@ public class LoginCliente extends HttpServlet {
                           rd.forward(request, response);
                           return;
                 }
+            }else{
+                  request.setAttribute("msg", "Email não cadastrado");
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
+            return;
             }
 
         } catch (BuscarClienteException e) {
-            request.setAttribute("msg", "Não foi possível efetuar o login!");
-
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login-cliente.jsp");
-            rd.forward(request, response);
+             request.setAttribute("msg", "Não foi possível buscar seu cadastro");
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
             return;
         } catch (ErroEncriptacaoException ex) {
-            request.setAttribute("msg", "Não foi possível efetuar o login!");
-
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login-cliente.jsp");
-            rd.forward(request, response);
+            request.setAttribute("msg", "Não foi possível efeturar seu login");
+           request.getRequestDispatcher("erro.jsp").forward(request, response);
             return;
         }
+        
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
