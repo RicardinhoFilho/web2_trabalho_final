@@ -20,6 +20,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-gradient-primary">
+      
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -64,7 +65,6 @@
                                                             </form>
                                                         </div>
                                                         <div class="card-footer text-center">
-                                                            <div class="small"><a href="cadastroSimples.html">Criar uma conta</a></div>
                                                         </div>
                                                     </div>
                                                 </div>

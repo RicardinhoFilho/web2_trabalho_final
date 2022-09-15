@@ -36,7 +36,6 @@
                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
                             <a class="nav-link" href="index.jsp">Métricas</a>
                             <a class="nav-link" href="ListarFuncionarios">Listar usuários</a>
-                            <a class="nav-link" href="usuarios.html">Cadastrar usuários</a>
                             <a class="nav-link" href="ListarChamados">Chamados</a>
                             <a class="nav-link" href="ListaProdutos">Listar produtos</a>
                             <a class="nav-link" href="ListaCategorias">Listar categorias</a>

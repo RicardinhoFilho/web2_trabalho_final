@@ -24,10 +24,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <div id="layoutSidenav_nav">
                 <nav class="sidenav shadow-right sidenav-light">
                     <jsp:include page="menu.jsp"/>
+                    <c:import url="ListarPorCategoria"></c:import>
 
-                </nav>
+                    </nav>
 
-            </div>
+                </div>
             <c:choose>
                 <c:when test="${sessionScope.funcionario != null}">
                     <div id="layoutSidenav_content">
@@ -45,112 +46,125 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                         Chamados em aberto</div>
                                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        
+
                                                         <c:import url="Total"></c:import>   
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Earnings (Monthly) Card Example -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-start-lg border-primary shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                        Tempo médio de resolução</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        
-                                                         <c:import url="Tempo"></c:import>H
-                                                        
+                                    <!-- Earnings (Monthly) Card Example -->
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                        <div class="card border-start-lg border-primary shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                            Tempo médio de resolução</div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+                                                        <c:import url="Tempo"></c:import>H
+
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas  fa-clock fa-2x text-gray-300"></i>
+                                                    <div class="col-auto">
+                                                        <i class="fas  fa-clock fa-2x text-gray-300"></i>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
 
-                                <!-- Earnings (Monthly) Card Example -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-start-lg border-danger shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1"> Chamados atrasados
+                                    <!-- Earnings (Monthly) Card Example -->
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                        <div class="card border-start-lg border-danger shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1"> Chamados atrasados
+                                                        </div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+                                                        <c:import url="Atrasado"></c:import>
+
+                                                        </div>
                                                     </div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        
-                                                         <c:import url="Atrasado"></c:import>
-                                                        
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
                                                     </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Pending Requests Card Example -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-start-lg border-success shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                        Chamados fechados hoje</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        
+                                    <!-- Pending Requests Card Example -->
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                        <div class="card border-start-lg border-success shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                            Chamados fechados hoje</div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+
                                                         <c:import url="FechadosHoje"></c:import>
-                                                        
+
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Styled timeline component-->
-                        <div id="timelineStyled">
-                            <div class="card mb-4">
-                                <a href="ListarChamados" class="card-header">Visualizar Chamados</a>
+                            <!-- Styled timeline component-->
+                            <div class="container-fluid px-4">
+                                <h1>Chamados Por Categoria</h1>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table id="datatablesSimple">
+                                            <thead>
+                                                <tr>
+                                                     <th>Categoria</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tbody>
+                                            <c:forEach var="item" items="${chamados}">
+                                                <tr>
+                                                    <td><c:out value="${item.titulo}" /></td>
+
+                                                    <td><c:out value="${item.id}" /></td>
+
+                                                </tr>
 
 
 
-
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-
-
-
-
-
                         </div>
-                    </div>
-                </div>
 
-            </c:when>
-            <c:otherwise>
-                <c:redirect url="MeusChamados" />
-            </c:otherwise>
+                    </c:when>
+                    <c:otherwise>
+                        <c:redirect url="MeusChamados" />
+                    </c:otherwise>
 
-        </c:choose>     
+                </c:choose>     
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-    </body>
-</html>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+                <script src="js/scripts.js"></script>
+                </body>
+                </html>

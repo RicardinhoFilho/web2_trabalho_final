@@ -3,6 +3,7 @@
     Created on : 31 de ago de 2022, 16:43:48
     Author     : User
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.beibe.model.Funcionario" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,6 +22,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-gradient-primary">
+    <c:catch />
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>

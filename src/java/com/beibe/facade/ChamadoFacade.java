@@ -142,4 +142,19 @@ public class ChamadoFacade {
         }
 
     }
+         
+          public static List<Chamado>  listarPorCategoria() throws CriarRespostaException {
+
+        try {
+
+            DAOChamado dao = new DAOChamado(new ConnectionDAO().conectaDB());
+            return  dao.listarPorCategoria();
+
+        } catch (DAOException e) {
+            throw new CriarRespostaException("Erro selecionar dados", e);
+        }
+
+    }
+         
+         
 }

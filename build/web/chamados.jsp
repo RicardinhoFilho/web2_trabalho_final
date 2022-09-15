@@ -8,6 +8,7 @@
 <%@ page import="com.beibe.model.Chamado" %>
 <%@ page import ="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -90,7 +91,10 @@
                                             <div class="timeline-item">
                                                 <div class="timeline-item-marker">
                                                     <div class="timeline-item-marker-text"> <c:out value="${item.criacao}" /> </div>
-                                                    <div class="timeline-item-marker-indicator bg-warning-soft text-warning"><i data-feather="plus"></i></div>
+                                                    <div class="timeline-item-marker-indicator bg-warning-soft text-warning">
+                                                       
+                                                        <img src="https://ui-avatars.com/api/?name=<c:out value="${item.cliente.nome}"/>" alt="alt"/>
+                                                    </div>
                                                 </div>
                                                 <div class="timeline-item-content pt-0">
                                                     <div class="card shadow-sm">

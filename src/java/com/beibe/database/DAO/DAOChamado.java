@@ -119,6 +119,41 @@ public class DAOChamado implements IChamadoDAO {
         return chamados;
 
     }
+    
+    
+     public List<Chamado> listarPorCategoria() throws DAOException {
+
+        List<Chamado> chamados = new ArrayList<Chamado>();
+        try {
+
+            ResultSet rs = (conn.createStatement().executeQuery("select count(categorias.id) as total, categorias.nome as categoria \n" +
+"from chamado inner join produto on produto.id = chamado.produto_id inner join categorias on categorias.id = produto.categoria_id group by  categorias.id"));
+            while (rs.next()) {
+
+                Chamado chamado = new Chamado();
+                Cliente cliente = new Cliente();
+                chamado.setId(rs.getInt("total"));
+                chamado.setTitulo(rs.getString("categoria"));
+               
+                
+
+                
+                DAOResposta daoResposta = new DAOResposta(new ConnectionDAO().conectaDB());
+
+                chamado.setRepostas(daoResposta.listaTodosPorChamado(chamado.getId()));
+
+                chamados.add(chamado);
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DAOException(e);
+        }
+        return chamados;
+
+    }
+
 
     @Override
     public void excluir(int id) {
