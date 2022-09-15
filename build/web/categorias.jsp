@@ -7,7 +7,7 @@
 <%@ page import="com.beibe.model.Categoria" %>
 <%@ page import ="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -96,8 +96,7 @@
                                         <c:forEach var="item" items="${categorias}">
                                             <tr>
                                                 <td><c:out value="${item.nome}" /></td>
-
-                                                 <td><c:out value="${item.created_at}" /></td>
+                                                <td><fmt:formatDate type="Date" pattern="dd/MM/yyyy" value="${item.created_at}" /></td>
                                                 <td>
                                                     <button class="btn btn-datatable btn-icon btn-transparent-dark me-2" type="button" data-bs-toggle="modal" data-bs-target="#editGroupModal<c:out value="${item.id}"/>">EDITAR</button>
                                                     <a class="btn btn-datatable btn-icon btn-transparent-dark" href="ExcluirCategoria?id=<c:out value="${item.id}"/>">EXCLUIR</a>

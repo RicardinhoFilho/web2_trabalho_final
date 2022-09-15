@@ -8,7 +8,7 @@
 <%@ page import="com.beibe.model.Produto" %>
 <%@ page import ="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -122,8 +122,8 @@
                                             <tr>
                                                 <td><c:out value="${item.nome}" /></td>
                                                 <td>R$<c:out value="${item.preco}" /></td>
-                                                <td><c:out value="${item.data_criacao}" /></td>
-                                                <td><c:out value="${item.validade}" /></td>
+                                                <td><fmt:formatDate type="Date" pattern="dd/MM/yyyy" value="${item.data_criacao}" /></td>
+                                                <td><fmt:formatDate type="Date" pattern="dd/MM/yyyy" value="${item.validade}" /></td>
                                                 <td><c:out value="${item.saldo}" /></td>
                                                 <td>
                                                     <button class="btn btn-datatable btn-icon btn-transparent-dark me-2" type="button" data-bs-toggle="modal" data-bs-target="#editGroupModal<c:out value="${item.id}" />">Editar</button>

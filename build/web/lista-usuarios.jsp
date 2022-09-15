@@ -29,32 +29,8 @@
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sidenav shadow-right sidenav-light">
-                    <div class="sidenav-menu">
-                        <div class="nav accordion" id="accordionSidenav">
-                            <!-- Sidenav Menu Heading (Core)-->
-                            <jsp:include page="menu.jsp"/>
-                        </div>
-
-                    </div>
+                    <jsp:include page="menu.jsp"/>
                 </nav>
-
-                    </h6>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.html">
-                        <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                        Sair
-                    </a>
-                </div>
-            </li>
-        </ul>
-    </nav>
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_nav">
-            <nav class="sidenav shadow-right sidenav-light">
-                <jsp:include page="menu.jsp"/>
-            </nav>
-
-
             </div>
             <div id="layoutSidenav_content">
                 <main>
@@ -88,23 +64,7 @@
                                             <th>Nome</th>
                                             <th>Email</th>
                                             <th>Groups</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            
-                                            
-                                            
-
+                                            <th>Ações</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -112,40 +72,32 @@
                                             <th>User</th>
                                             <th>Email</th>
                                             <th>Cargos</th>
+
+                                            <th>Ações</th>
                                         </tr>
                                     </tfoot>
-                                    <%  List<Funcionario> funcionarios= (List<Funcionario>) request.getAttribute("funcionarios"); 
-                                         
-                                    %>
-
                                     <tbody>
-                                        <c:forEach var="item" items="${funcionarios}">
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar me-2"><img class="avatar-img img-fluid" src="https://ui-avatars.com/api/?name=<c:out value="${item.nome}"/>" /></div>
+                                        <c:forEach var="item" items="${requestScope.funcionarios}">
+                                           
+                                                <tr>
+
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
                                                             <c:out value="${item.nome}" />   <c:out value="${item.sobrenome}" />
-                                                    </div>
-                                                </td>
-                                                <td> <c:out value="${item.email}" /></td>
-                                                <td>
-                                                    <span class="badge bg-green-soft text-green"> 
-                                                        <c:choose>
+                                                        </div>
+                                                    </td>
+                                                    <td><c:out value="${item.email}"/></td>
+                                                    <td>
+                                                        <c:if test="${item.isAdmin()}"><span class="badge bg-green-soft text-green">Gerente</span></c:if>
+                                                        <c:if test="${!item.isAdmin()}"><span class="badge bg-yellow-soft text-yellow">Funcionário</span></c:if>
+                                                        </td>
 
-                                                            <c:when test = "${item.isAdmin() == true}">
-                                                                Administrador
-                                                            </c:when>
-
-
-
-                                                            <c:otherwise>
-                                                                Atendente
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                    </span>
-                                                </td>
-
-                                            </tr>
+                                                        <td>
+                                                            <a class="btn btn-datatable btn-icon btn-transparent-dark me-2" href="editarUsu.html"><i data-feather="edit"></i></a>
+                                                            <a class="btn btn-datatable btn-icon btn-transparent-dark" href="#!"><i data-feather="trash-2"></i></a>
+                                                        </td>
+                                                    </tr>
+                                     
                                         </c:forEach>
                                     </tbody>
                                 </table>
