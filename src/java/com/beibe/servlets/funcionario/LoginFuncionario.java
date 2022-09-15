@@ -8,6 +8,8 @@ import com.beibe.database.ConnectionDAO;
 import com.beibe.database.DAO.DAOFuncionario;
 import com.beibe.facade.FuncionarioFacade;
 import com.beibe.model.Funcionario;
+import com.beibe.utils.PasswordEncrypter;
+import com.beibe.utils.exceptions.ErroEncriptacaoException;
 import com.beibe.utils.exceptions.funcionarioExceptions.BuscarFuncionarioException;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -17,6 +19,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.RequestDispatcher;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -36,7 +40,7 @@ public class LoginFuncionario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+    request.setCharacterEncoding("UTF-8");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         Funcionario funcionario = null;
@@ -46,7 +50,7 @@ public class LoginFuncionario extends HttpServlet {
             funcionario = FuncionarioFacade.buscaPorEmail(email);
             
             if (funcionario.getId() != null) {
-                if (senha.equals(funcionario.getSenha())) {
+                if (PasswordEncrypter.realizaEncriptacao(senha).equals(funcionario.getSenha())) {
                     HttpSession session = request.getSession(true);
                     session.setAttribute("funcionario", funcionario);
                     response.sendRedirect("index.jsp");
@@ -66,6 +70,10 @@ public class LoginFuncionario extends HttpServlet {
             rd.forward(request, response);
             
             return;
+        } catch (ErroEncriptacaoException ex) {
+             request.setAttribute("msg", "Não foi possível efetuar o login!");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login-funcionario.jsp");
+            rd.forward(request, response);
         }
 
     }

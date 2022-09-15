@@ -35,7 +35,9 @@ public class CriarChamado extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
+        
         try {
             String texto = request.getParameter("texto");
             String titulo = request.getParameter("titulo");

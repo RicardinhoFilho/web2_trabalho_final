@@ -35,6 +35,7 @@ public class CriarResposta extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            request.setCharacterEncoding("UTF-8");
             String texto = request.getParameter("texto");
             Integer id = Integer.parseInt(request.getParameter("id"));
 

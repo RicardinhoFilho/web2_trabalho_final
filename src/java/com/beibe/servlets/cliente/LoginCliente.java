@@ -8,6 +8,8 @@ import com.beibe.database.ConnectionDAO;
 import com.beibe.database.DAO.DAOCliente;
 import com.beibe.facade.ClienteFacade;
 import com.beibe.model.Cliente;
+import com.beibe.utils.PasswordEncrypter;
+import com.beibe.utils.exceptions.ErroEncriptacaoException;
 import com.beibe.utils.exceptions.clienteExceptions.BuscarClienteException;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
@@ -17,6 +19,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -36,6 +40,7 @@ public class LoginCliente extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            request.setCharacterEncoding("UTF-8");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         Cliente cliente = null;
@@ -45,7 +50,7 @@ public class LoginCliente extends HttpServlet {
             cliente = ClienteFacade.buscaPorEmail(email);
              
             if (cliente.getId() != null) {
-                if (senha.equals(cliente.getSenha())) {
+                if (PasswordEncrypter.realizaEncriptacao(senha).equals(cliente.getSenha())) {
                     
                     HttpSession session = request.getSession(true);
                     session.setAttribute("cliente", cliente);
@@ -62,6 +67,12 @@ public class LoginCliente extends HttpServlet {
             }
 
         } catch (BuscarClienteException e) {
+            request.setAttribute("msg", "Não foi possível efetuar o login!");
+
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login-cliente.jsp");
+            rd.forward(request, response);
+            return;
+        } catch (ErroEncriptacaoException ex) {
             request.setAttribute("msg", "Não foi possível efetuar o login!");
 
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/login-cliente.jsp");

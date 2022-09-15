@@ -3,7 +3,7 @@
     Created on : 31 de ago de 2022, 16:43:48
     Author     : User
 --%>
-
+<%@ page import="com.beibe.model.Funcionario" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -60,7 +60,7 @@
                                             </div>
                                             <!-- Form Group (login box)-->
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="redefinirSenha.html">Esqueceu sua senha?</a>
+                                                <a class="small" href="login-funcionario.jsp">Sou funcionário</a>
                                                 <button class="btn btn-primary" type="submit" >Entrar</button>
                                             </div>
                                         </form>

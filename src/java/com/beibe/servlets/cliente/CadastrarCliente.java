@@ -6,6 +6,8 @@ package com.beibe.servlets.cliente;
 
 import com.beibe.facade.ClienteFacade;
 import com.beibe.model.Cliente;
+import com.beibe.utils.PasswordEncrypter;
+import com.beibe.utils.exceptions.ErroEncriptacaoException;
 import com.beibe.utils.exceptions.clienteExceptions.BuscarClienteException;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
@@ -16,6 +18,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,6 +39,7 @@ public class CadastrarCliente extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String email = request.getParameter("email");
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
@@ -46,13 +51,19 @@ public class CadastrarCliente extends HttpServlet {
         try {
             cliente.setEmail(email);
             cliente.setNome(nome);
-            cliente.setSenha(senha);
+            cliente.setSenha(PasswordEncrypter.realizaEncriptacao(senha));
             cliente.setSobrenome(sobrenome);
-
+  
             ClienteFacade.criarCliente(cliente);
             response.sendRedirect("login-cliente.jsp");
             return;
         } catch (BuscarClienteException e) {
+            request.setAttribute("msg", "Não foi possível fazer cadastro!");
+
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login-cliente.jsp");
+            rd.forward(request, response);
+            return;
+        } catch (ErroEncriptacaoException ex) {
             request.setAttribute("msg", "Não foi possível fazer cadastro!");
 
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/login-cliente.jsp");

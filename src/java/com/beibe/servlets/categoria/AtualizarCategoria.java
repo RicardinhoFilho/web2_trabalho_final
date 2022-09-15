@@ -34,6 +34,7 @@ public class AtualizarCategoria extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            request.setCharacterEncoding("UTF-8");
 
             String nome = request.getParameter("nome");
             Integer id = Integer.parseInt(request.getParameter("id"));

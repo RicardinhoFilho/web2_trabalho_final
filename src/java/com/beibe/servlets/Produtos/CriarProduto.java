@@ -35,7 +35,7 @@ public class CriarProduto extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+request.setCharacterEncoding("UTF-8");
         try {
             HttpSession session = request.getSession(false);
             Funcionario funcionario = (Funcionario) session.getAttribute("funcionario");

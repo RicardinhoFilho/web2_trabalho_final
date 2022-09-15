@@ -59,8 +59,7 @@
                                                                 </div>
                                                                 <!-- Form Group (login box)-->
                                                                 <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                                    <a class="small" href="redefinirSenha.html">Esqueceu sua senha?</a>
-                                                                    <button class="btn btn-primary" type="submit" >Entrar</button>
+                                                                    <a class="small" href="login-cliente.jsp">Sou cliente</a>                                                                    <button class="btn btn-primary" type="submit" >Entrar</button>
                                                                 </div>
                                                             </form>
                                                         </div>

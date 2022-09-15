@@ -37,7 +37,7 @@ public class CriarCategoria extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-
+request.setCharacterEncoding("UTF-8");
             String nome = request.getParameter("nome");
             HttpSession session = request.getSession(false);
             Funcionario funcionario = (Funcionario) session.getAttribute("funcionario");

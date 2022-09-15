@@ -6,6 +6,8 @@ package com.beibe.servlets.funcionario;
 
 import com.beibe.facade.FuncionarioFacade;
 import com.beibe.model.Funcionario;
+import com.beibe.utils.PasswordEncrypter;
+import com.beibe.utils.exceptions.ErroEncriptacaoException;
 import com.beibe.utils.exceptions.funcionarioExceptions.BuscarFuncionarioException;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpSession;
@@ -16,6 +18,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,15 +39,17 @@ public class CadastrarFuncionario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String email = request.getParameter("email");
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
 
         Boolean isAdmin = request.getParameter("admin") != null;
-        String senha = request.getParameter("senha");
+        String senha = (request.getParameter("senha"));
         Funcionario funcionario = new Funcionario();
 
         try {
+
             funcionario.setEmail(email);
             funcionario.setNome(nome);
 
@@ -51,10 +57,10 @@ public class CadastrarFuncionario extends HttpServlet {
 
             funcionario.setAdmin(isAdmin);
 
-            funcionario.setSenha(senha);
+            funcionario.setSenha(PasswordEncrypter.realizaEncriptacao(senha));
 
             FuncionarioFacade.criar(funcionario);
-            
+
             response.sendRedirect("ListarFuncionarios");
 
         } catch (BuscarFuncionarioException e) {
@@ -63,6 +69,10 @@ public class CadastrarFuncionario extends HttpServlet {
             rd.forward(request, response);
 
             return;
+        } catch (ErroEncriptacaoException ex) {
+            request.setAttribute("msg", "Não foi possível efetuar o login!");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login-funcionario.jsp");
+            rd.forward(request, response);
         }
     }
 
