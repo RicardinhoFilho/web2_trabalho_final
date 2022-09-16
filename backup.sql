@@ -27,7 +27,7 @@ CREATE TABLE `categorias` (
   `nome` varchar(250) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'Higiene','2022-08-30 13:34:25'),(2,'Pele','2022-08-31 18:16:54');
+INSERT INTO `categorias` VALUES (1,'Higiene','2022-08-30 13:34:25'),(2,'Pele','2022-08-31 18:16:54'),(14,'Beleza','2022-09-16 19:48:42');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +58,7 @@ CREATE TABLE `chamado` (
   PRIMARY KEY (`ID`),
   KEY `FK_CHAMAD_CLIENTE` (`cliente_id`),
   CONSTRAINT `FK_CHAMAD_CLIENTE` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `chamado` (
 
 LOCK TABLES `chamado` WRITE;
 /*!40000 ALTER TABLE `chamado` DISABLE KEYS */;
-INSERT INTO `chamado` VALUES (11,'Atraso na entrega dos meus produtos','Comprei o Shampoo a cerca de 16 dias e o prazo de entrega era 7, gostaria que me respondessem a razão da demora!',3,'2022-09-15 20:27:12','2022-09-15 20:24:25',22),(12,'Pomada de Pele com Defeito','Olá, a pomada de pele que comprei com vocês não trouxe nenhum resultado positivo, gostaria de receber meu dinheiro de volta!',4,NULL,'2022-09-15 20:28:55',27),(13,'Pedido Incompleto','Olá, solicitei a entrega de 2 frascos de ômega 3, entretanto vieram 3. A cobrança foi feita sobre os dois que eu pedi somente, gostaria de saber oq devo fazer com o que veio a mais!',5,'2022-09-15 21:36:09','2022-09-15 20:32:27',25),(14,'Desodorante ótimo','Este desodorante é muito bom, parabéns pelo produto!',4,NULL,'2022-09-15 22:02:23',23),(15,'Shampoo muito oleoso','Não gostei do shampoo, achei ele muito oleoso!',6,NULL,'2022-09-16 00:00:21',22);
+INSERT INTO `chamado` VALUES (11,'Atraso na entrega dos meus produtos','Comprei o Shampoo a cerca de 16 dias e o prazo de entrega era 7, gostaria que me respondessem a razão da demora!',3,'2022-09-15 20:27:12','2022-09-15 20:24:25',22),(12,'Pomada de Pele com Defeito','Olá, a pomada de pele que comprei com vocês não trouxe nenhum resultado positivo, gostaria de receber meu dinheiro de volta!',4,'2022-09-16 19:50:40','2022-09-15 20:28:55',27),(13,'Pedido Incompleto','Olá, solicitei a entrega de 2 frascos de ômega 3, entretanto vieram 3. A cobrança foi feita sobre os dois que eu pedi somente, gostaria de saber oq devo fazer com o que veio a mais!',5,'2022-09-15 21:36:09','2022-09-15 20:32:27',25),(14,'Desodorante ótimo','Este desodorante é muito bom, parabéns pelo produto!',4,NULL,'2022-09-15 22:02:23',23),(15,'Shampoo muito oleoso','Não gostei do shampoo, achei ele muito oleoso!',6,NULL,'2022-09-16 00:00:21',22),(16,'Esmalte de Péssima qualidade','O esmalte de vocês é muito amador!',4,NULL,'2022-09-16 19:51:42',28);
 /*!40000 ALTER TABLE `chamado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +142,7 @@ CREATE TABLE `produto` (
   `saldo` int NOT NULL,
   `categoria_id` int DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +151,7 @@ CREATE TABLE `produto` (
 
 LOCK TABLES `produto` WRITE;
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
-INSERT INTO `produto` VALUES (22,'Shampoo',12,'2022-09-15 20:19:25','2022-09-15',150,1),(23,'Desodorante',9,'2022-09-15 20:19:57','2022-09-15',500,1),(24,'Óleo de cocô',15,'2022-09-15 20:20:50','2022-09-15',500,2),(25,'Ômega 3',16,'2022-09-15 20:21:14','2022-09-15',500,1),(26,'Mantega de Cacau',2,'2022-09-15 20:21:34','2022-09-15',500,1),(27,'Pomada de Pele',4,'2022-09-15 20:22:07','2022-09-15',100,2);
+INSERT INTO `produto` VALUES (22,'Shampoo',12,'2022-09-15 20:19:25','2022-09-15',150,1),(23,'Desodorante',9,'2022-09-15 20:19:57','2022-09-15',500,1),(24,'Óleo de cocô',15,'2022-09-15 20:20:50','2022-09-15',500,2),(25,'Ômega 3',16,'2022-09-15 20:21:14','2022-09-15',500,1),(26,'Mantega de Cacau',2,'2022-09-15 20:21:34','2022-09-15',500,1),(27,'Pomada de Pele',4,'2022-09-15 20:22:07','2022-09-15',100,2),(28,'Esmalte',8,'2022-09-16 19:47:17','2022-09-16',100,14),(29,'Loção para Barba',90,'2022-09-16 19:47:43','2022-09-16',500,14),(30,'Glos',4,'2022-09-16 19:48:26','2022-09-16',200,14);
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,4 +195,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-15 21:06:47
+-- Dump completed on 2022-09-16 17:04:45
