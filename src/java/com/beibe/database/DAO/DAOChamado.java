@@ -88,7 +88,7 @@ public class DAOChamado implements IChamadoDAO {
         List<Chamado> chamados = new ArrayList<Chamado>();
         try {
 
-            ResultSet rs = (conn.createStatement().executeQuery("select * from chamado inner join cliente on cliente_id = cliente.id"));
+            ResultSet rs = (conn.createStatement().executeQuery("select * from chamado inner join cliente on cliente_id = cliente.id order by finalizado asc,criacao desc"));
             while (rs.next()) {
 
                 Chamado chamado = new Chamado();
